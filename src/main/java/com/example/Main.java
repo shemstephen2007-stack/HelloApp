@@ -5,24 +5,20 @@ public class Main {
         // Default value
         String resultName = "World";
 
-        // UC 5: Using Enhanced For Loop
+        // UC 6: Using Substring to Remove Trailing Delimiter
         if (args.length > 0) {
             StringBuilder nameBuilder = new StringBuilder();
-            boolean isFirst = true;
 
-            // The enhanced for loop: iterates through each 'arg' in the 'args' array
+            // Append every name followed by a comma and space
             for (String name : args) {
-                // If it's NOT the first name, add a comma separator before the name
-                if (!isFirst) {
-                    nameBuilder.append(", ");
-                }
-
-                nameBuilder.append(name);
-
-                // After the first iteration, set the flag to false
-                isFirst = false;
+                nameBuilder.append(name).append(", ");
             }
-            resultName = nameBuilder.toString();
+
+            // At this point, nameBuilder looks like "Alice, Bob, Charlie, "
+            // We need to remove the last two characters (the comma and the space)
+            if (nameBuilder.length() > 0) {
+                resultName = nameBuilder.substring(0, nameBuilder.length() - 2);
+            }
         }
 
         System.out.println("Hello, " + resultName + "!");
