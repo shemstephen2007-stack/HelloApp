@@ -2,18 +2,26 @@ package com.example;
 
 public class Main {
     public static void main(String[] args) {
-        // UC 3: Provide Default Value
-        // We initialize the variable with the default "World"
+        // Default value if no arguments are provided
         String name = "World";
 
-        // Check if a name is provided as a command-line argument
-        // If args.length is greater than 0, it means the user passed a name
+        // UC 4: Greet Multiple Users
         if (args.length > 0) {
-            name = args[0]; // Update the variable with the provided name
+            StringBuilder nameBuilder = new StringBuilder();
+
+            for (int i = 0; i < args.length; i++) {
+                nameBuilder.append(args[i]);
+
+                // Add a comma and space only if it's NOT the last element
+                if (i < args.length - 1) {
+                    nameBuilder.append(", ");
+                }
+            }
+            // Convert the builder content to the final string
+            name = nameBuilder.toString();
         }
 
-        // Display the greeting
-        // This will print "Hello, World!" by default, or "Hello, [Name]!" if provided
+        // Output the result
         System.out.println("Hello, " + name + "!");
     }
 }
