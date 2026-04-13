@@ -2,26 +2,29 @@ package com.example;
 
 public class Main {
     public static void main(String[] args) {
-        // Default value if no arguments are provided
-        String name = "World";
+        // Default value
+        String resultName = "World";
 
-        // UC 4: Greet Multiple Users
+        // UC 5: Using Enhanced For Loop
         if (args.length > 0) {
             StringBuilder nameBuilder = new StringBuilder();
+            boolean isFirst = true;
 
-            for (int i = 0; i < args.length; i++) {
-                nameBuilder.append(args[i]);
-
-                // Add a comma and space only if it's NOT the last element
-                if (i < args.length - 1) {
+            // The enhanced for loop: iterates through each 'arg' in the 'args' array
+            for (String name : args) {
+                // If it's NOT the first name, add a comma separator before the name
+                if (!isFirst) {
                     nameBuilder.append(", ");
                 }
+
+                nameBuilder.append(name);
+
+                // After the first iteration, set the flag to false
+                isFirst = false;
             }
-            // Convert the builder content to the final string
-            name = nameBuilder.toString();
+            resultName = nameBuilder.toString();
         }
 
-        // Output the result
-        System.out.println("Hello, " + name + "!");
+        System.out.println("Hello, " + resultName + "!");
     }
 }
